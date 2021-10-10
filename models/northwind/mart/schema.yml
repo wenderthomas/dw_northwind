@@ -1,0 +1,64 @@
+
+version: 2
+
+models:
+    - name: fato_vendas
+      description: "validação da tabela fato vendas"
+      columns:
+          - name: order_id
+            description: "id do pedido"
+            tests:
+                - not_null
+          - name: customer_id
+            description: "id do cliente"
+            tests:
+                - not_null
+          - name: employee_id
+            description: "id do vendedor"
+            tests:
+                - not_null
+          - name: product_id
+            description: "id do produto"
+            tests:
+                - not_null
+          - name: supplier_id
+            description: "id do fornecedor do produto"
+            tests:
+                - not_null
+          - name : row_sk
+            description: "id único da tabela de vendas"
+            tests:
+                - unique
+                - not_null
+    - name: dim_clientes
+      description: "validação da tabela de dimensão de clientes"
+      columns:
+        - name: customer_id
+          description: "id do cliente"
+          tests:
+            - unique
+            - not_null
+    - name: dim_produtos
+      description: "validação da tabela de dimensão de produtos"
+      columns:
+        - name: product_id
+          description: "id do produto"
+          tests:
+            - unique
+            - not_null
+    - name: dim_vendedor
+      description: "validação da tabela de dimensão de vendedores"
+      columns:
+        - name: employee_id
+          description: "id do vendedor"
+          tests:
+            - unique
+            - not_null
+    - name: dim_fornecedor
+      description: "validação da tabela de dimensão de fornecedores"
+      columns:
+        - name: supplier_id
+          description: "id do fornecedor"
+          tests:
+            - unique
+            - not_null                            
