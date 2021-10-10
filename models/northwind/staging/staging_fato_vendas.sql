@@ -13,6 +13,7 @@ with source_data as (
         , customer_id
         , employee_id
         , order_date
+        , ship_via as shipper_id
     from {{ source('dw_northwind', 'public_orders')}}
 )
 , products_suppliers as (
@@ -39,5 +40,6 @@ select
     , employee_id
     , order_date
     , supplier_id
+    , shipper_id
 from vendas
 left join products_suppliers on vendas.product_id = products_suppliers.p_id

@@ -25,6 +25,10 @@ models:
             description: "id do fornecedor do produto"
             tests:
                 - not_null
+          - name: shipper_id
+            description: "id do transportador do produto"
+            tests:
+                - not_null                
           - name : row_sk
             description: "id único da tabela de vendas"
             tests:
@@ -61,4 +65,12 @@ models:
           description: "id do fornecedor"
           tests:
             - unique
-            - not_null                            
+            - not_null
+    - name: dim_transportador
+      description: "validação da tabela de dimensão de transportadores"
+      columns:
+        - name: shipper_id
+          description: "id do transportador"
+          tests:
+            - unique
+            - not_null                                        
